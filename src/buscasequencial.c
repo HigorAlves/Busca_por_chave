@@ -4,7 +4,6 @@
 #include <sys/time.h>
 #include "headers/buscasequencial.h"
 
-
 void sequencia(){
     struct timeval inicio, final;
     int tmili;
