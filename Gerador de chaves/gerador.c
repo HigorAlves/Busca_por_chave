@@ -17,10 +17,10 @@ int main(){
 	int cont;
 	
 	srand(time(NULL));
-
+	
 	if(arq == NULL)
 			printf("Erro, nao foi possivel abrir o arquivo\n");
-	else		
+	 else		
 		while((fgets(frases[i].frase,100,arq))!= NULL)
 			i++;
 
