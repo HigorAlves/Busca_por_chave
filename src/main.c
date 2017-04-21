@@ -2,6 +2,7 @@
 #       Trabalho pratico AEDS III       #
 #         Higor Henrique Alves          #
 #######################################*/
+
 #include "Headers/arvorebinaria.h"
 #include "Headers/busca.h"
 #include "Headers/quicksort.h"

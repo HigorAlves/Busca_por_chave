@@ -3,7 +3,7 @@
 /*------------------------------------------    BUSCA SEQUENCIAL    --------------------------------------
 Verifica se o arquivo foi aberto, depois percorre o arquivo sequencialmente e verifica se a chave procurada
 foi achada, apos isso vai verificar se se chegou no final do arquivo, re-olha se a chave buscada é igual a
-chave de busca.
+chave de busca..
 --------------------------------------------------------------------------------------------------------*/
 void Busca_Sequencial(char *argv,char *chave_busca){
     FILE *arq;
