@@ -1,4 +1,3 @@
-//coments feitos
 #include "Headers/arvorebinaria.h"
 #include <string.h>
 
@@ -81,7 +80,7 @@ int Insere_Arvore(No *raiz, char *valor, char *chave){
 Vamos inicializar a arvore pegar os dados do arquivo e colocar na memoria,
 insere os dados na arvore e verifica se ela foi montada.
 --------------------------------------------------*/
-int Inicializa_arvore(char *argv, No *raiz){
+int Inicia_arvore(char *argv, No *raiz){
     FILE *arq;
     int i,x;
     char chave_arquivo[2];

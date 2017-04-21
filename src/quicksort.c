@@ -7,10 +7,9 @@ outro arquivo.
 -----------------------------------------------------------------------------------------*/
 
 void Ordena_Arquivo(char *argv){
-    int i;
-    
     FILE *arq,*arq1;
     Dados *dado;
+    int i;
     dado = malloc(200 * sizeof(struct dado));
 
     arq1 = fopen("arquivo_ordenado","w");
@@ -23,13 +22,12 @@ void Ordena_Arquivo(char *argv){
             break;
         }
     }
-
     QuickSort(dado,198,0);
 
     for(i = 0; i < 200; i++){
         fprintf(arq1,"%c%c%s",dado[i].chave[0],dado[i].chave[1],dado[i].valor);
     }
-    
+
     fclose(arq1);
     fclose(arq);
     free(dado);
@@ -39,6 +37,7 @@ void Ordena_Arquivo(char *argv){
 
 void QuickSort(Dados *dado, int fim, int inicio){
     int pivo;
+    
     if(fim > inicio){
         pivo = particiona(dado, fim, inicio);
         QuickSort(dado, pivo - 1, inicio);
@@ -52,13 +51,16 @@ chave seja menor iremos jogar a esquerda e maior a direita, caso nao seja menor 
 da esquerda nao avança e sai do loop.
 Fazemos isso duas vezes para o pivo da esquerda e da direita.
 */
+
 int particiona(Dados *dado, int fim, int inicio){
     int esq = 0,dir = 0,chave_maior = 1;
+    
     Dados aux;
     Dados pivo;
     esq = inicio;
     dir = fim;
     pivo = dado[inicio];
+
     while(esq < dir){
             do{
                 chave_maior = 1;
@@ -71,7 +73,7 @@ int particiona(Dados *dado, int fim, int inicio){
                 }
                 if(chave_maior == 0){
                     esq++;
-                }else
+                }else{
                     chave_maior = 1;
                 }
             }while(chave_maior == 0);
@@ -87,7 +89,7 @@ int particiona(Dados *dado, int fim, int inicio){
                 }
                 if(chave_maior == 0){
                     dir--;
-                }else
+                }else{
                     chave_maior == 1;
                 }
             }while(chave_maior == 0);
@@ -97,7 +99,9 @@ int particiona(Dados *dado, int fim, int inicio){
                 dado[dir] = aux;
             }
     }
+
     dado[inicio] = dado[dir];
     dado[dir] = pivo;
+    
     return dir;
 }

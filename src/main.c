@@ -53,7 +53,7 @@ int main(int argc, char *argv[]){
 
             case 2:
                 raiz = cria_arvore();
-                Inicializa_arvore(argv[1],raiz);
+                Inicia_arvore(argv[1],raiz);
                 gettimeofday(&inicio,NULL);
                 Busca_Arvore(raiz, chave);
                 gettimeofday(&fim,NULL);
