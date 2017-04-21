@@ -8,73 +8,6 @@ No* cria_arvore(){
     return raiz;
 }
 
-int Insere_Arvore(No *raiz, char *valor, char *chave){
-    No *novo;
-    novo = malloc(sizeof(struct no));
-    novo->chave[0] = chave[0];
-    novo->chave[1] = chave[1];
-    strcpy(novo->valor,valor);
-    novo->dir = NULL;
-    novo->esq = NULL;
-
-    /*---------------------------------------------------------------------------------------------
-    Irá cirar um no para ser inserido na arvore de dados, verifica se caso nao tenha no,
-    inserir depois da raiz. Busca o local onde vai ser inserido e é feito atraves de comparações
-    entre a chave do arquivo e a do no na arvore. Depois ele verifica a letra para saber se ela
-    vai ser inserida na direita ou na esquerda, caso as letras sejam iguais ira verificar os numeros
-    e realizar o mesmo.
-    ----------------------------------------------------------------------------------------------*/
-    if((raiz->dir == NULL) && raiz->esq == NULL){
-        raiz->dir = novo;
-    }else{
-        No *atual = raiz;
-        No *anterior = raiz;
-        while(atual != NULL){
-            anterior = atual;
-            if(chave[0] == atual->chave[0]){
-                if(chave[1] == atual->chave[1]){
-                    atual = atual->dir;
-                }else{
-                    if(chave[1] > atual->chave[1]){
-                        atual = atual->dir;
-                    }else{
-                        atual = atual->esq;
-                    }
-                }
-            }else{
-                if(chave[0] > atual->chave[0]){
-                    atual = atual->dir;
-                }else{
-                    atual = atual->esq;
-                }
-            }
-        }
-        /*---------------------------------------------------------------------------------------------------
-        Encontrando o local para ser inserido, vamos comparar as chaves e os nos de nossa arvore criada.
-        Assim iremos comparar as chaves e colocar a direita ou a esquerda no folha
-        ---------------------------------------------------------------------------------------------------*/
-        //Compara as letras.
-        if(chave[0] == anterior->chave[0]){
-            if(chave[1] == anterior->chave[1]){
-                anterior->dir = novo;
-            }else{
-                if(chave[1] > anterior->chave[1]){
-                    anterior->dir = novo;
-                }else{
-                    anterior->esq = novo;
-                }
-            }
-        //Letra diferente olha os numeros.
-        }else{
-            if(chave[0] > anterior->chave[0]){
-                anterior->dir = novo;
-            }else{
-                anterior->esq = novo;
-            }
-        }
-    }
-    return 1;
-}
 
 /*--------------------------------------------------
 Vamos inicializar a arvore pegar os dados do arquivo e colocar na memoria,
@@ -104,3 +37,72 @@ int Inicia_arvore(char *argv, No *raiz){
     }
 }
 
+    /*---------------------------------------------------------------------------------------------
+    Irá cirar um no para ser inserido na arvore de dados, verifica se caso nao tenha no,
+    inserir depois da raiz. Busca o local onde vai ser inserido e é feito atraves de comparações
+    entre a chave do arquivo e a do no na arvore. Depois ele verifica a letra para saber se ela
+    vai ser inserida na direita ou na esquerda, caso as letras sejam iguais ira verificar os numeros
+    e realizar o mesmo.
+    ----------------------------------------------------------------------------------------------*/
+
+int Insere_Arvore(No *raiz, char *valor, char *chave){
+    
+    No *novo;
+    novo = malloc(sizeof(struct no));
+    novo->chave[0] = chave[0];
+    novo->chave[1] = chave[1];
+    strcpy(novo->valor,valor);
+    novo->dir = NULL;
+    novo->esq = NULL;
+
+    if((raiz->dir == NULL) && raiz->esq == NULL){
+        raiz->dir = novo;
+    }else{
+        No *atual = raiz;
+        No *anterior = raiz;
+        while(atual != NULL){
+            anterior = atual;
+            if(chave[0] == atual->chave[0]){
+                if(chave[1] == atual->chave[1]){
+                    atual = atual->dir;
+                }else{
+                    if(chave[1] > atual->chave[1]){
+                        atual = atual->dir;
+                    }else{
+                        atual = atual->esq;
+                    }
+                }
+            }else{
+                if(chave[0] > atual->chave[0]){
+                    atual = atual->dir;
+                }else{
+                    atual = atual->esq;
+                }
+            }
+        }
+
+        /*---------------------------------------------------------------------------------------------------
+        Encontrando o local para ser inserido, vamos comparar as chaves e os nos de nossa arvore criada.
+        Assim iremos comparar as chaves e colocar a direita ou a esquerda no folha
+        ---------------------------------------------------------------------------------------------------*/
+
+        if(chave[0] == anterior->chave[0]){
+            if(chave[1] == anterior->chave[1]){
+                anterior->dir = novo;
+            }else{
+                if(chave[1] > anterior->chave[1]){
+                    anterior->dir = novo;
+                }else{
+                    anterior->esq = novo;
+                }
+            }
+        }else{
+            if(chave[0] > anterior->chave[0]){
+                anterior->dir = novo;
+            }else{
+                anterior->esq = novo;
+            }
+        }
+    }
+    return 1;
+}

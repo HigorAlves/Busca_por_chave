@@ -1,50 +1,5 @@
 #include "Headers/quicksort.h"
 
-/*----------------------------------------- Ordena Arquivo --------------------------------
-Ordena o arquivo usando QuickSort, para isso ele pega os dados do arquivo e joga na memoria
-verifica se chegou ao final do arquivo, salva em um vetor de dados ja ordenados dentro de
-outro arquivo.
------------------------------------------------------------------------------------------*/
-
-void Ordena_Arquivo(char *argv){
-    FILE *arq,*arq1;
-    Dados *dado;
-    int i;
-    dado = malloc(200 * sizeof(struct dado));
-
-    arq1 = fopen("arquivo_ordenado","w");
-    arq = fopen(argv, "r");
-
-    for(i = 0; i < 200; i++){
-        fscanf(arq,"%c%c",&dado[i].chave[0],&dado[i].chave[1]);
-        fgets(dado[i].valor,100,arq);
-        if(feof(arq)){
-            break;
-        }
-    }
-    QuickSort(dado,198,0);
-
-    for(i = 0; i < 200; i++){
-        fprintf(arq1,"%c%c%s",dado[i].chave[0],dado[i].chave[1],dado[i].valor);
-    }
-
-    fclose(arq1);
-    fclose(arq);
-    free(dado);
-    
-    return;
-}
-
-void QuickSort(Dados *dado, int fim, int inicio){
-    int pivo;
-    
-    if(fim > inicio){
-        pivo = particiona(dado, fim, inicio);
-        QuickSort(dado, pivo - 1, inicio);
-        QuickSort(dado, fim, pivo+1);
-    }
-}
-
 /*
 Aqui verificamos se a chave é menor ou igual a de um pivo, seja ele letra ou numero, e caso a 
 chave seja menor iremos jogar a esquerda e maior a direita, caso nao seja menor que o pivo
@@ -104,4 +59,49 @@ int particiona(Dados *dado, int fim, int inicio){
     dado[dir] = pivo;
     
     return dir;
+}
+
+/*----------------------------------------- Ordena Arquivo --------------------------------
+Ordena o arquivo usando QuickSort, para isso ele pega os dados do arquivo e joga na memoria
+verifica se chegou ao final do arquivo, salva em um vetor de dados ja ordenados dentro de
+outro arquivo.
+-----------------------------------------------------------------------------------------*/
+
+void Ordena_Arquivo(char *argv){
+    FILE *arq,*arq1;
+    Dados *dado;
+    int i;
+    dado = malloc(200 * sizeof(struct dado));
+
+    arq1 = fopen("arquivo_ordenado","w");
+    arq = fopen(argv, "r");
+
+    for(i = 0; i < 200; i++){
+        fscanf(arq,"%c%c",&dado[i].chave[0],&dado[i].chave[1]);
+        fgets(dado[i].valor,100,arq);
+        if(feof(arq)){
+            break;
+        }
+    }
+    QuickSort(dado,198,0);
+
+    for(i = 0; i < 200; i++){
+        fprintf(arq1,"%c%c%s",dado[i].chave[0],dado[i].chave[1],dado[i].valor);
+    }
+
+    fclose(arq1);
+    fclose(arq);
+    free(dado);
+    
+    return;
+}
+
+void QuickSort(Dados *dado, int fim, int inicio){
+    int pivo;
+    
+    if(fim > inicio){
+        pivo = particiona(dado, fim, inicio);
+        QuickSort(dado, pivo - 1, inicio);
+        QuickSort(dado, fim, pivo+1);
+    }
 }

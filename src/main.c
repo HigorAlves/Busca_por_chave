@@ -15,13 +15,13 @@ colocamos o tipo de busca que o usuario pode escolher para fazer.
 */
 
 int main(int argc, char *argv[]){
-    struct timeval inicio,fim;
-    int tmili;
     
     int opcao; 
     struct no *raiz;
     char chave[2];
-
+    struct timeval inicio,fim;
+    int tmili;
+    
     if(argc < 2){
         printf("Falha na execução.\nTente passar o arquivo de texto por argumento!");
         return 0;
