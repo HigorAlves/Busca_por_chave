@@ -6,10 +6,8 @@
 #include "arvorebinaria.h"
 #include "quicksort.h"
 
-void Busca_Binaria(char *chave_busca);
-
-void Busca_Arvore(No *raiz, char *chave_busca);
-
-void Busca_Sequencial(char *argv, char *chave_busca);
+void Bbinaria(char *chave_busca);//Busca Binaria
+void Bsequencial(char *argv, char *chave_busca);//Busca Sequencial
+void Barvore(No *raiz, char *chave_busca);//Busca na arvore
 
 #endif

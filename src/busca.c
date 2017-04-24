@@ -6,7 +6,7 @@ ou que nao seja mais possivel dividir e fazemos comparações entre a chave busc
 Logo apos as comparações feitas de acordo com a metade do vetor, se a chave estiver maior ou menor
 que a metade do vetor iremos procurar a chave em seu respectivo lado.
 --------------------------------------------------------------------------------------------------*/
-void Busca_Binaria(char *chave_busca){
+void Bbinaria(char *chave_busca){
     FILE *arq;
     Dados *dado;
     int i,inicio,meio,fim;
@@ -55,7 +55,7 @@ Verifica se o arquivo foi aberto, depois percorre o arquivo sequencialmente e ve
 foi achada, apos isso vai verificar se se chegou no final do arquivo, re-olha se a chave buscada é igual a
 chave de busca..
 --------------------------------------------------------------------------------------------------------*/
-void Busca_Sequencial(char *argv,char *chave_busca){
+void Bsequencial(char *argv,char *chave_busca){
     FILE *arq;
     char chave_arquivo[2];
     char valor_chave[100];
@@ -91,7 +91,7 @@ e o no atual, vemos se as letras e numeros são iguais, caso o numero ou a letra
 procurar no no da direita ou no nó da esquerda.
 -------------------------------------------------------------------------------------------------------------------------------*/
 
-void Busca_Arvore(No *raiz, char *chave_busca){
+void Barvore(No *raiz, char *chave_busca){
     if((raiz->dir == NULL) && raiz->esq == NULL){
         printf("A arvore nao foi criada, sera impossivel realizar a busca.\n");
         return;

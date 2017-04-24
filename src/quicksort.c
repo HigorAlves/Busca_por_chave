@@ -7,7 +7,7 @@ da esquerda nao avança e sai do loop.
 Fazemos isso duas vezes para o pivo da esquerda e da direita.
 */
 
-int particiona(Dados *dado, int fim, int inicio){
+int separador(Dados *dado, int fim, int inicio){
     int esq = 0,dir = 0,chave_maior = 1;
     
     Dados aux;
@@ -62,12 +62,12 @@ int particiona(Dados *dado, int fim, int inicio){
 }
 
 /*----------------------------------------- Ordena Arquivo --------------------------------
-Ordena o arquivo usando QuickSort, para isso ele pega os dados do arquivo e joga na memoria
+Ordena o arquivo usando Quicksort, para isso ele pega os dados do arquivo e joga na memoria
 verifica se chegou ao final do arquivo, salva em um vetor de dados ja ordenados dentro de
 outro arquivo.
 -----------------------------------------------------------------------------------------*/
 
-void Ordena_Arquivo(char *argv){
+void OrdArquivo(char *argv){
     FILE *arq,*arq1;
     Dados *dado;
     int i;
@@ -83,7 +83,7 @@ void Ordena_Arquivo(char *argv){
             break;
         }
     }
-    QuickSort(dado,198,0);
+    Quicksort(dado,198,0);
 
     for(i = 0; i < 200; i++){
         fprintf(arq1,"%c%c%s",dado[i].chave[0],dado[i].chave[1],dado[i].valor);
@@ -96,12 +96,12 @@ void Ordena_Arquivo(char *argv){
     return;
 }
 
-void QuickSort(Dados *dado, int fim, int inicio){
+void Quicksort(Dados *dado, int fim, int inicio){
     int pivo;
     
     if(fim > inicio){
-        pivo = particiona(dado, fim, inicio);
-        QuickSort(dado, pivo - 1, inicio);
-        QuickSort(dado, fim, pivo+1);
+        pivo = separador(dado, fim, inicio);
+        Quicksort(dado, pivo - 1, inicio);
+        Quicksort(dado, fim, pivo+1);
     }
 }

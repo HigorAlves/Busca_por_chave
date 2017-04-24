@@ -43,9 +43,9 @@ int main(int argc, char *argv[]){
         
         switch(opcao){
             case 1:
-                Ordena_Arquivo(argv[1]);
+                OrdArquivo(argv[1]);
                 gettimeofday(&inicio,NULL);
-                Busca_Binaria(chave);
+                Bbinaria(chave);
                 gettimeofday(&fim,NULL);
 
                 tmili = (int) (1000 * (fim.tv_sec - inicio.tv_sec) + (fim.tv_usec - inicio.tv_usec));
@@ -53,10 +53,10 @@ int main(int argc, char *argv[]){
             break;
 
             case 2:
-                raiz = cria_arvore();
-                Inicia_arvore(argv[1],raiz);
+                raiz = CriarArvore();
+                IniciarArvore(argv[1],raiz);
                 gettimeofday(&inicio,NULL);
-                Busca_Arvore(raiz, chave);
+                Barvore(raiz, chave);
                 gettimeofday(&fim,NULL);
 
                 tmili = (int) (1000 * (fim.tv_sec - inicio.tv_sec) + (fim.tv_usec - inicio.tv_usec));
@@ -65,7 +65,7 @@ int main(int argc, char *argv[]){
 
             case 3:
                 gettimeofday(&inicio,NULL);
-                Busca_Sequencial(argv[1],chave);
+                Bsequencial(argv[1],chave);
                 gettimeofday(&fim,NULL);
 
                 tmili = (float) (1000 * (fim.tv_sec - inicio.tv_sec) + (fim.tv_usec - inicio.tv_usec));

@@ -11,12 +11,8 @@ typedef struct no{
     struct no* dir;
 }No;
 
-No* cria_arvore();
-
-//Cria o no e insere na arvore.
-int Insere_Arvore(No *raiz, char *valor, char *chave);
-
-//Armazena os dados do arquivo para armazenar na arvore.
-int Inicia_arvore(char *argv, No *raiz);
+No* CriarArvore();
+int InserteArvore(No *raiz, char *valor, char *chave);
+int IniciarArvore(char *argv, No *raiz);
 
 #endif

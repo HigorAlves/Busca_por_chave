@@ -1,7 +1,7 @@
 #include "Headers/arvorebinaria.h"
 #include <string.h>
 
-No* cria_arvore(){
+No* CriarArvore(){
     No* raiz = malloc(sizeof(struct no));
     raiz->dir = NULL;
     raiz->esq = NULL;
@@ -13,7 +13,7 @@ No* cria_arvore(){
 Vamos inicializar a arvore pegar os dados do arquivo e colocar na memoria,
 insere os dados na arvore e verifica se ela foi montada.
 --------------------------------------------------*/
-int Inicia_arvore(char *argv, No *raiz){
+int IniciarArvore(char *argv, No *raiz){
     FILE *arq;
     int i,x;
     char chave_arquivo[2];
@@ -28,7 +28,7 @@ int Inicia_arvore(char *argv, No *raiz){
         fscanf(arq, "%c%c",&chave_arquivo[0],&chave_arquivo[1]);
         fgets(valor_chave,100,arq);
         if(!feof(arq)){
-            x = Insere_Arvore(raiz, valor_chave,chave_arquivo);
+            x = InserteArvore(raiz, valor_chave,chave_arquivo);
             if(x == 0){
                 printf("Falha ao montar arvore\n");
                 return 0;
@@ -45,7 +45,7 @@ int Inicia_arvore(char *argv, No *raiz){
     e realizar o mesmo.
     ----------------------------------------------------------------------------------------------*/
 
-int Insere_Arvore(No *raiz, char *valor, char *chave){
+int InserteArvore(No *raiz, char *valor, char *chave){
     
     No *novo;
     novo = malloc(sizeof(struct no));
